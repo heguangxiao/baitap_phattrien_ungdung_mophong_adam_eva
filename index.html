@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="script.js"></script>
+</head>
+<body>
+<script>
+    let npc = new Human('NPC' , true, 999);
+    let adam = new Human();
+    let eva = new Human('Eva', false, 50);
+    let apple;
+    let treeApple = [];
+
+    adam.setName('Adam');
+    adam.setGender(true);
+    adam.setWeight(70);
+    treeApple.push(new Apple());
+
+    apple = Math.floor(Math.random()*(treeApple.length-1)) + 1;
+
+    adam.say('hello');
+    eva.say('hi');
+    adam.say("what your's name");
+    eva.say(eva.getName() + ' . and you ?');
+    adam.say(adam.getName() + ' . Nice to meet you');
+    eva.say(' Nice to meet you');
+
+    if (adam.checkApple(treeApple[apple - 1])) {
+        adam.say('Eva oi , co tao nay <br/>');
+        eva.say('Adam an di'+  '<br/>');
+        adam.say('ok'+  '<br/>');
+        for (;;) {
+            if (adam.checkApple(treeApple[apple - 1])) {
+                npc.say('Adam nang ' + adam.getWeight() + '<br/>');
+                npc.say('Adam an tao <br/>');
+                adam.eat(treeApple[apple - 1]);
+                npc.say('Adam tang can thanh ' + adam.getWeight() + '<br/>');
+                adam.say('Eva cung an di' + '<br/>');
+                eva.say('ok' + '<br/>');
+            } else {
+                adam.say('Tao het roi' + '<br/>');
+                break;
+            }
+            if (eva.checkApple(treeApple[apple - 1])) {
+                eva.say('Eva nang ' + eva.getWeight() + '<br/>');
+                npc.say('Eva an tao <br/>');
+                eva.eat(treeApple[apple - 1]);
+                npc.say('Eva tang can thanh ' + eva.getWeight() + '<br/>');
+                eva.say('Eva cung an di' + '<br/>');
+                adam.say('ok' + '<br/>');
+            } else {
+                eva.say('Tao het roi' + '<br/>');
+                break;
+            }
+        }
+    }
+
+
+</script>
+</body>
+</html>
